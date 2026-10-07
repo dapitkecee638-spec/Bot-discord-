@@ -1,0 +1,12 @@
+# Blueprint Render (opsional). Pakai ini kalau mau deploy via "New + Blueprint".
+# Kalau deploy manual lewat dashboard, file ini boleh diabaikan.
+services:
+  - type: web           # Pakai "web" karena kode sudah menyediakan health check di PORT
+    name: discord-automod-bot
+    env: node
+    plan: free           # Ganti "starter" kalau butuh bot tetap online 24 jam tanpa idle
+    buildCommand: npm install
+    startCommand: npm start
+    envVars:
+      - key: TOKEN
+        sync: false       # Diisi manual lewat dashboard Render, bukan di file ini
